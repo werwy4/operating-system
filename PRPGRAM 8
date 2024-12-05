@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+typedef struct { int id, burst, remaining; } Process;
+
+int main() {
+    Process p[] = {{1, 10, 10}, {2, 5, 5}, {3, 8, 8}};
+    int n = 3, time = 0, quantum = 3, completed = 0;
+
+    while (completed < n) {
+        for (int i = 0; i < n; i++) {
+            if (p[i].remaining > 0) {
+                int exec = p[i].remaining < quantum ? p[i].remaining : quantum;
+                printf("Time %d: P%d\n", time, p[i].id);
+                p[i].remaining -= exec;
+                time += exec;
+                if (p[i].remaining == 0) completed++;
+            }
+        }
+    }
+    return 0;
+}
+
+OUTPUT:
+Time 0: P1
+Time 3: P2
+Time 6: P3
+Time 9: P1
+Time 12: P2
+Time 14: P3
+Time 17: P1
+Time 20: P3
+Time 22: P1
+
+
+=== Code Execution Successful ===
