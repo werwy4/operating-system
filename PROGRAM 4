@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+    int n, bt[10], wt[10] = {0}, tat[10], i, j, temp;
+    printf("Enter number of processes: ");
+    scanf("%d", &n);
+    printf("Enter burst times: ");
+    for (i = 0; i < n; i++) scanf("%d", &bt[i]);
+
+    for (i = 0; i < n - 1; i++) // Sort burst times
+        for (j = i + 1; j < n; j++)
+            if (bt[i] > bt[j]) temp = bt[i], bt[i] = bt[j], bt[j] = temp;
+
+    for (i = 1; i < n; i++) wt[i] = wt[i - 1] + bt[i - 1];
+    for (i = 0; i < n; i++) tat[i] = wt[i] + bt[i];
+
+    for (i = 0; i < n; i++) printf("P%d BT:%d WT:%d TAT:%d\n", i + 1, bt[i], wt[i], tat[i]);
+    return 0;
+}
