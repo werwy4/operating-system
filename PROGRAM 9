@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+int main() {
+    int *shm_ptr, shmid = shmget(1234, sizeof(int), 0666 | IPC_CREAT);
+    shm_ptr = (int *)shmat(shmid, NULL, 0);
+    *shm_ptr = 42;
+    printf("Shared Memory: %d\n", *shm_ptr);
+    shmdt(shm_ptr);
+    return 0;
+}
+OUTPUT:
+Shared Memory: 42
+
+
+=== Code Execution Successful ===PROGRAM 9
