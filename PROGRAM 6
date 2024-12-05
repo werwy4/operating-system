@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+typedef struct { int id, burst, priority, remaining; } Process;
+
+int main() {
+    Process p[] = {{1, 8, 2, 8}, {2, 4, 1, 4}, {3, 9, 3, 9}};
+    int n = 3, time = 0, completed = 0;
+
+    while (completed < n) {
+        int idx = -1, minPriority = 1e9;
+        for (int i = 0; i < n; i++)
+            if (p[i].remaining > 0 && p[i].priority < minPriority)
+                minPriority = p[i].priority, idx = i;
+
+        if (idx != -1) {
+            printf("Time %d: Process %d\n", time, p[idx].id);
+            p[idx].remaining--;
+            if (p[idx].remaining == 0) completed++;
+        }
+        time++;
+    }
+    return 0;
+}
