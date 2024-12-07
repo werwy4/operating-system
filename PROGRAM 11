@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+#define N 5
+
+void philosopher(int id) {
+    printf("Philosopher %d is thinking.\n", id);
+    printf("Philosopher %d picks up fork %d and %d.\n", id, id, (id + 1) % N);
+    printf("Philosopher %d is eating.\n", id);
+    printf("Philosopher %d puts down fork %d and %d.\n", id, id, (id + 1) % N);
+}
+
+int main() {
+    for (int i = 0; i < N; i++) {
+        philosopher(i);
+    }
+    return 0;
+}
+
+OUTPUT:
+Philosopher 0 is thinking.
+Philosopher 0 picks up fork 0 and 1.
+Philosopher 0 is eating.
+Philosopher 0 puts down fork 0 and 1.
+Philosopher 1 is thinking.
+Philosopher 1 picks up fork 1 and 2.
+Philosopher 1 is eating.
+Philosopher 1 puts down fork 1 and 2.
+Philosopher 2 is thinking.
+Philosopher 2 picks up fork 2 and 3.
+Philosopher 2 is eating.
+Philosopher 2 puts down fork 2 and 3.
+Philosopher 3 is thinking.
+Philosopher 3 picks up fork 3 and 4.
+Philosopher 3 is eating.
+Philosopher 3 puts down fork 3 and 4.
+Philosopher 4 is thinking.
+Philosopher 4 picks up fork 4 and 0.
+Philosopher 4 is eating.
+Philosopher 4 puts down fork 4 and 0.
+
