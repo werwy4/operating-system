@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int main() {
+    int indexBlock[5] = {0, 1, 2, 3, 4}, fileData[5] = {10, 20, 30, 40, 50}, n;
+    scanf("%d", &n);
+    if (n >= 0 && n < 5) printf("%d\n", fileData[indexBlock[n]]);
+    return 0;
+}
+
+OUTPUT:
+2
+30
