@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+#define MAX_FRAMES 3
+
+int main() {
+    int pages[] = {7, 0, 1, 2, 0, 3, 0, 4}, frames[MAX_FRAMES] = {-1}, page_faults = 0;
+
+    for (int i = 0; i < 8; i++) {
+        int found = 0, replace = 0;
+        for (int j = 0; j < MAX_FRAMES; j++) {
+            if (frames[j] == pages[i]) { found = 1; break; }
+        }
+        if (!found) {
+            for (int j = 0; j < MAX_FRAMES; j++) {
+                int farthest = i;
+                for (int k = i + 1; k < 8; k++) {
+                    if (frames[j] == pages[k]) { farthest = k; break; }
+                }
+                if (farthest == i) { replace = j; break; }
+            }
+            frames[replace] = pages[i];
+            page_faults++;
+        }
+    }
+    printf("%d\n", page_faults);
+    return 0;
+}
+output:
+5
