@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 5
+int buffer[MAX];
+int in = 0, out = 0;
+
+void producer() {
+    int item;
+    item = rand() % 100; 
+    if ((in + 1) % MAX != out) {  
+        buffer[in] = item;
+        printf("Produced: %d\n", item);
+        in = (in + 1) % MAX;
+    }
+}
+
+void consumer() {
+    if (in != out) { 
+        int item = buffer[out];
+        printf("Consumed: %d\n", item);
+        out = (out + 1) % MAX;
+    }
+}
+
+int main() {
+    int i;
+    for (i = 0; i < 10; i++) { 
+        producer();
+        consumer();
+    }
+    return 0;
+}
+OUTPUT:
+Produced: 83
+Consumed: 83
+Produced: 86
+Consumed: 86
+Produced: 77
+Consumed: 77
+Produced: 15
+Consumed: 15
+Produced: 93
+Consumed: 93
+Produced: 35
+Consumed: 35
+Produced: 86
+Consumed: 86
+Produced: 92
+Consumed: 92
+Produced: 49
+Consumed: 49
+Produced: 21
+Consumed: 21
