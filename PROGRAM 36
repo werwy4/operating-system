@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int main() {
+    int blocks[5] = {10, 20, 30, 40, 50}, next[5] = {1, 2, 3, 4, -1}, current = 0;
+    while (current != -1) {
+        printf("%d ", blocks[current]);
+        current = next[current];
+    }
+    return 0;
+}
+OUTPUT:
+10,20,30,40,50
