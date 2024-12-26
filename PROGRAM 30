@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+void task1() {
+    printf("Executing task 1...\n");
+}
+
+void task2() {
+    printf("Executing task 2...\n");
+}
+
+int main() {
+    task1();
+    task2();
+    return 0;
+}
+output:
+Executing task 1...
+Executing task 2...
