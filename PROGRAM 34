@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+#define MAX_RECORDS 5
+
+int main() {
+    int records[MAX_RECORDS] = {10, 20, 30, 40, 50}, n;
+    scanf("%d", &n);
+    if (n < 1 || n > MAX_RECORDS) return 0;
+    for (int i = 0; i < n; i++) printf("%d ", records[i]);
+    return 0;
+}
+OUTPUT:
+1
+10
