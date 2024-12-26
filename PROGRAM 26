@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int main() {
+    int fd = open("file.txt", O_CREAT | O_RDWR, 0644);
+    if (fd == -1) { perror("Error opening file"); return 1; }
+
+    write(fd, "Hello, File Management!\n", 24);
+
+    lseek(fd, 0, SEEK_SET);
+    char buffer[25];
+    read(fd, buffer, 24);
+    printf("Read from file: %s", buffer);
+
+    close(fd);
+    return 0;
+}
+OUTPUT:
+Error opening file: Permission denied
